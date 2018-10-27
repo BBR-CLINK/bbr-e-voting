@@ -110,9 +110,9 @@ class Board extends Component {
                     <input type="text" className="form-control" placeholder="Vote Title" onChange={(e)=>{this._inputTitle(e)}} style={{position: "absolute", left: 360, top: 220}} />
                     <input type="text" placeholder="new cadidate" onChange={this._inputCand} className= "form-control" style={{position: "absolute", left: 360, top: 290}} />
                     <input type="button" style={{position: "absolute", left: 810, top: 290}} className= "btn btn-option btn-lg" value="   ADD   " onClick={this._inputCandArr}/>
-                    <p>
+                    <p style={{position: "absolute", left: 365, top: 390}} >
                         {this.state.candidate.map((cand) =>
-                            <li key={cand}>{cand}</li> 
+                            <li className="h3" key={cand}>{cand}</li> 
                         )}
                     </p>
                     <p>
