@@ -144,7 +144,7 @@ class Board extends Component {
             console.log(res);
         });*/
         
-        alert(`Name : ${this.state.title} \n Meta : 총학생회 \n Sstamp : 1540512000 \n Estamp : 1540857600 \n candidate : [1,2,3]`);
+        alert(`Name : 총학생회 투표 \n Meta : 총학생회 \n Sstamp : 1540512000 \n Estamp : 1540857600 \n candidate : [1,2,3]`);
         
         this.setState({
             title : "",
@@ -171,11 +171,11 @@ class Board extends Component {
                 <div>
                     <p className="h3" style={{position: "absolute", left: 370, top: 120}}>Create Page</p>
                     <input type="text" className="form-control" placeholder="Vote Title" onChange={(e)=>{this._inputTitle(e)}} style={{position: "absolute", left: 360, top: 200}} />
-                    <input type="text" className="form-control" placeholder="Depart" onChange={this._inputDepart} style={{position: "absolute", left: 360, top: 250}}/>
-                    <input type="text" className="form-control" placeholder="mmdd/mmdd" onChange={this._inputDepart} style={{position: "absolute", left: 360, top: 300}}/>
-                    <input type="text" placeholder="new cadidate" onChange={this._inputCand} className= "form-control" style={{position: "absolute", left: 360, top: 350}} />
+                    <input type="text" className="form-control" placeholder="Depart" onChange={this._inputDepart} style={{position: "absolute", left: 360, top: 270}}/>
+                    <input type="text" className="form-control" placeholder="mmdd/mmdd" onChange={this._inputDepart} style={{position: "absolute", left: 360, top: 340}}/>
+                    <input type="text" placeholder="new cadidate" onChange={this._inputCand} className= "form-control" style={{position: "absolute", left: 360, top: 380}} />
                     <input type="button" style={{position: "absolute", left: 810, top: 290}} className= "btn btn-option btn-lg" value="   ADD   " onClick={this._inputCandArr}/>
-                    <p style={{position: "absolute", left: 365, top: 400}} >
+                    <p style={{position: "absolute", left: 365, top: 420}} >
                         {this.state.candidate.map((cand) =>
                             <li className="h3" key={cand}>{cand}</li> 
                         )}
