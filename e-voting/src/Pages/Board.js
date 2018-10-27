@@ -24,11 +24,18 @@ class Board extends Component {
         let pk = this.props.publicKey;
         let _depart = this.props.depart;
 
+        let utf8 = unescape(encodeURIComponent(pk));
+
+        let byteArr = [];
+        for (let i = 0; i < utf8.length; i++) {
+            byteArr.push(utf8.charCodeAt(i));
+        }
+
         axios({
             method: 'post',
             url: '/user/12345',
             data: {
-              publicKey: pk,
+              publicKey: byteArr,
               depart: _depart
             }
           }).then((res) => {
