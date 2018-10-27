@@ -106,8 +106,8 @@ class Board extends Component {
         } else if(this.state.clicked === true) {
             return(
                 <div>
-                    <p>Create Page</p>
-                    <input type="text" placeholder="Vote Title" onChange={this._inputTitle} />
+                    <input type="text" className="form-control" placeholder="Vote Title" onChange={(e)=>{this._inputTitle(e)}} style={{position: "absolute", left: 410, top: 220}} />
+                    <p className="h3" style={{position: "absolute", left: 410, top: 120}}>Create Page</p>
                     <input type="text" placeholder="new cadidate" onChange={this._inputCand} />
                     <input type="button" value="ADD" onClick={this._inputCandArr}/>
                     <p>
