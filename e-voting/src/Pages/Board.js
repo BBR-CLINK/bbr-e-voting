@@ -11,12 +11,17 @@ class Board extends Component {
         this._inputCand = this._inputCand.bind(this);
         this._inputCandArr = this._inputCandArr.bind(this);
         this._createSubmit = this._createSubmit.bind(this);
+        this._inputTime = this._inputTime.bind(this);
         
         this.state = {
             clicked : false,
             title : "",
+            depart : "",
             candTemp : "",
             candidate : [],
+            end : 0,
+            SUT : 0,
+            EUT : 0,
         };
     }
 
@@ -33,7 +38,7 @@ class Board extends Component {
 
         axios({
             method: 'post',
-            url: '/user/12345',
+            url: 'www.eatda.cf',
             data: {
               publicKey: byteArr,
               depart: _depart
@@ -74,17 +79,44 @@ class Board extends Component {
         })
     }
 
+    _inputTime(e){
+        let _time = e.target.value;
+
+        this.setState({
+            end : _time
+        })
+    }
+
+    _inputDepart(e){
+        let _depart = e.target.value;
+
+        this.setState({
+            depart : _depart
+        })
+    }
+
     _createSubmit(){
         let _title = this.state.title;
         let _candidate = this.state.candidate;
+        let _meta = this.state.depart;
+
+        let _end = this.state.end;
+        let SDate = Date.now();
+        let EDate;
+        let SUnixTime = SDate.getUnixTime();
+        SDate.setDate (SDate.getDate() + _end);
+        EDate = SDate;
+        let EUnixTime = EDate.getUnixTime();
 
         axios({
             method: 'post',
-            url: '/user/12345',
+            url: 'http://www.eatda.cf/voteReg',
             data: {
-              creator: "manager",
-              title : _title,
-              candidate : _candidate
+              Name : _title,
+              Meta : _meta,
+              Candidate : _candidate,
+              S_timestamp : SUnixTime,
+              E_timestamp : EUnixTime,
             }
           }).then((res) => {
             console.log(res);
@@ -93,7 +125,7 @@ class Board extends Component {
         this.setState({
             title : "",
             candidate : [],
-            clicked : false
+            clicked : false,
         })
     }
 
@@ -115,12 +147,16 @@ class Board extends Component {
                 <div>
                     <p className="h3" style={{position: "absolute", left: 370, top: 120}}>Create Page</p>
                     <input type="text" className="form-control" placeholder="Vote Title" onChange={(e)=>{this._inputTitle(e)}} style={{position: "absolute", left: 360, top: 220}} />
+                    <input type="text" placeholder="Depart" onChange={this._inputDepart}/>
                     <input type="text" placeholder="new cadidate" onChange={this._inputCand} className= "form-control" style={{position: "absolute", left: 360, top: 290}} />
                     <input type="button" style={{position: "absolute", left: 810, top: 290}} className= "btn btn-option btn-lg" value="   ADD   " onClick={this._inputCandArr}/>
                     <p style={{position: "absolute", left: 365, top: 390}} >
                         {this.state.candidate.map((cand) =>
                             <li className="h3" key={cand}>{cand}</li> 
                         )}
+                    </p>
+                    <p>
+                        <input type="number" placeholder="how days far off?" onChange={this._inputTime}/>
                     </p>
                     <p>
                         <input type="button" style={{position: "absolute", left: 810, top: 220}} className= "btn btn-option btn-lg" value="Create!" onClick={this._createSubmit}/>
