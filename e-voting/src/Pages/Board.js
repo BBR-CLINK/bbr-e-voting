@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import 'react-table/react-table.css'
 import axios from 'axios';
+import request from 'request'
+
+axios.baseURL = 'http://localhost:4000';
+//axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+//axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 class Board extends Component {
     constructor(props) {
@@ -34,14 +39,24 @@ class Board extends Component {
         let byteArr = [];
         for (let i = 0; i < utf8.length; i++) {
             byteArr.push(utf8.charCodeAt(i));
-        }
-
+        }/*
+        axios.get('/user', {
+            params: {
+                
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          */
+          
         axios({
             method: 'post',
-            url: 'www.eatda.cf',
+            header: {'Access-Control-Allow-Origin': '*',},
+            url: 'http://localhost:4000/voteType',
             data: {
-              publicKey: byteArr,
-              depart: _depart
+                publicKey: byteArr,
+                depart: _depart
             }
           }).then((res) => {
             console.log(res);
@@ -103,24 +118,26 @@ class Board extends Component {
         let _end = this.state.end;
         let SDate = Date.now();
         let EDate;
-        let SUnixTime = SDate.getUnixTime();
+        //let SUnixTime = SDate.getUnixTime();
         SDate.setDate (SDate.getDate() + _end);
         EDate = SDate;
-        let EUnixTime = EDate.getUnixTime();
-
+        //let EUnixTime = EDate.getUnixTime();
+        
         axios({
             method: 'post',
-            url: 'http://www.eatda.cf/voteReg',
+            header: {'Access-Control-Allow-Origin': '*',},
+            url: 'http://localhost:4000/voteReg',
             data: {
-              Name : _title,
-              Meta : _meta,
-              Candidate : _candidate,
-              S_timestamp : SUnixTime,
-              E_timestamp : EUnixTime,
+                Name : _title,
+                Meta : _meta,
+                Candidate : _candidate,
+                //S_timestamp : SUnixTime,
+                //E_timestamp : EUnixTime,
             }
           }).then((res) => {
             console.log(res);
         });
+        
         
         this.setState({
             title : "",
