@@ -117,7 +117,7 @@ class Home extends Component {
                     <input type="text" class="form-control" placeholder="ENG" style={{position: "absolute", left: 760, top: 235}}onChange={(e)=> {this._inputName(e)}}/>
                     <input type="text" class="form-control" placeholder="number" style={{position: "absolute", left: 760, top: 335}} onChange={(e) => {this._inputNumber(e)}}/>
                     <input type="text" class="form-control" placeholder="YYYYMMDD" style={{position: "absolute", left: 760, top: 435}} onChange={(e)=>{this._inputBirth(e)}}/>
-                    <input type="button" value="Submit" className= "btn btn-primary btn-lg" onClick={this._handleSubmit} style={{position: "absolute", left: 765, top: 570}}/>
+                    <input type="button" value="Submit" className= "btn btn-primary btn-lg" onClick={this._handleSubmit} style={{position: "absolute", left: 765, top: 580}}/>
                 </div>
                 </div>
                 
@@ -137,7 +137,7 @@ class Home extends Component {
                     <input type="text" class="form-control" placeholder="4 digits" onChange={(e)=>{this._inputPIN(e)}} style={{position: "absolute", left: 885, top: 380}} />
                     <p className="h3" style={{position: "absolute", left: 420, top: 450}} >Depart : </p>
                     <input type="text" class="form-control" placeholder="Depart" onChange={(e)=>{this._inputDepart(e)}} style={{position: "absolute", left: 885, top: 455}} />
-                    <input type="button" className= "btn btn-primary btn-lg" value="Submit" style={{position: "absolute", left: 765, top: 570}} onClick={this._handleSubmit}/>
+                    <input type="button" className= "btn btn-primary btn-lg" value="Submit" style={{position: "absolute", left: 765, top: 580}} onClick={this._handleSubmit}/>
 
                 </div>
             </div>
